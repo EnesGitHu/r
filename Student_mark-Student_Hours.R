@@ -47,13 +47,16 @@ cutoff
 mod_1 = lm(train$student_marks~train$study_hours,
            data = train)
 
+mod_2 = lm(train$student_marks~train$study_hours,
+           data = train_Out)
 
 plot(mod_1)
+plot(mod_2)
 
 res = which(uzak>cutoff)
 train_Out = train[-res,]
 
-par(mfrow = c(1,2))
+
 plot(train$study_hours,
      train$student_marks,
      pch = 19,
@@ -63,6 +66,15 @@ plot(train_Out$student_marks,
      train_Out$study_hours,
      pch = 19,
      bty = "L")
+
+### Burad R2 değerine bakılırsa Modelin doğruluğu %95 oranında gayet iyi değer
+### Buradaki Mod_1 aykırı değer çıkarılmamış
+### 1 saat fazladan çalışmak notlara 3.88 artmış etkisi olmuş
+summary(mod_1)
+
+dev.off()
+
+
 
 
 
