@@ -133,13 +133,19 @@ summary(mod_1_cv)
 summary(mod_2_cv)
 
 ?trainControl()
-model1_cv
-model2_cv
+mod_1_cv
+mod_2_cv
 
 model_cv_pred_1 = predict(model1_cv,
                           testSet)
 model_cv_pred_2 = predict(model2_cv,
                           testSet)
+
+
+
+# Artılkların Çıkarılmış Olduğu Veri seti daha doğru sonuçlar verir
+
+
 
 R2(model_cv_pred_1,
    testSet$price)
