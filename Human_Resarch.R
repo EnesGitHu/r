@@ -47,7 +47,21 @@ plot(data$SpecialProjectsCount,
 
 
 
+mean(data$Salary[data$Department == "Admin Offices"])
+mean(data$Salary[data$Department == "Executive Office"])
+mean(data$Salary[data$Department == "IT/IS"])
+mean(data$Salary[data$Department == "Sales"])
+mean(data$Salary[data$Department == "Software Engineering"])
+mean(data$Salary[data$Department ==  "Production"])
+table(data$Department)
 
+any(is.na(data$Salary))
 
+a = data%>%filter(Department == "Software Engineering")
 
+view(a)
 
+modelDummy = model.matrix(Salary~.,
+             data = data)
+
+view(modelDummy)
