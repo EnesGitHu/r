@@ -24,7 +24,19 @@ names(df)
 as.data.frame(table(a$Department))
 view(data)
 view(data)
+summary(data)
+which(data$Salary == 3754)
+view(df[311,])
+modelDataDummy = model.matrix()
 
+
+
+kruskal.test(data$Department~data$Salary)
+
+
+library(dunn.test)
+dunn.test(x = data$Salary,
+          g = data$Department)
 shapiro.test(a$Salary)
 kruskal.test(data$Salary~data$Department)
 
