@@ -1,7 +1,8 @@
 library(tidyverse)
-library()
+library(mice)
+library(glmnet)
 df = HRDataset_v14
-
+md.pattern(data)
 
 data = df%>%mutate(SpecialProjectsCount = as.factor(SpecialProjectsCount))%>%
   
@@ -65,3 +66,20 @@ modelDummy = model.matrix(Salary~.,
              data = data)
 
 view(modelDummy)
+
+dim(data)
+set.seed(145)
+index = sample(1:nrow(data),
+               size = 0.8*nrow(data))
+
+trainX = modelDummy[index,]
+testX = modelDummy[-index,]
+
+trainY = data$Salary[index]
+testY = data$Salary[-index]
+
+view(trainX)
+view(trainY)
+
+
+
